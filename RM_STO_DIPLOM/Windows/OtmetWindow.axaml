@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RM_STO_DIPLOM.OtmetWindow"
+        Title="OtmetWindow"
+		Width="800"
+		Height="450"
+		CanResize="False">
+	<Grid
+		Margin="10"
+		ColumnDefinitions="*,*"
+		Background="MediumAquamarine"
+		RowDefinitions="*,8*">
+		<TextBlock
+			Grid.Column="0"
+			Grid.Row="0"
+			FontWeight="Bold"
+			Foreground="White"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center"
+			Text="Этап"/>
+		<TextBlock
+			Grid.Column="1"
+			Grid.Row="0"
+			FontWeight="Bold"
+			Foreground="White"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center"
+			Text="Отметка"/>
+		<DataGrid
+			ItemsSource="{Binding Otmets}"
+			Background="White"
+			Grid.Column="0"
+			Grid.Row="1"
+			Grid.ColumnSpan="2">
+			<DataGrid.Styles>
+				<Style Selector="TextBlock">
+					<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+					<Setter Property="FontSize" Value="10"/>
+					<Setter Property="TextAlignment" Value="Center"/>
+				</Style>
+			</DataGrid.Styles>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Гр"
+									Width="60"
+									Binding="{Binding Graf}"/>
+				<DataGridTextColumn Header="№"
+									Width="60"
+									Binding="{Binding Num}"/>
+				<DataGridTextColumn Header="Наименование"
+									Width="270"
+									Binding="{Binding Naim}"/>
+				<DataGridTextColumn Header="Дата/Время"
+									Width="77"
+									Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Автор"
+									Width="100"
+									Binding="{Binding Author}" />
+				<DataGridTextColumn Header="Текст отметки"
+									Width="150"
+									Binding="{Binding Text}" />
+				<DataGridTextColumn Header="Признак"
+									Width="70"
+									Foreground="Red"
+									Binding="{Binding Prizn}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</Window>

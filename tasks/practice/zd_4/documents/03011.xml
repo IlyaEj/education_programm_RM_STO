@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<AltaE2CONT time="2025-03-14T10:00:21+03:00" user="LAPTOP-8N208713" Version="2.0.259.39" FileName="C:\ALTA\DOCSWIN\12.E2C" EDVer="5_24_0" Comment="">
+  <DocumentID>E09A4FF5-4DCB-4560-B28F-4B822DAAD99A</DocumentID>
+  <DocumentCode>03011</DocumentCode>
+  <SupplementationSign>true</SupplementationSign>
+  <ContractTerms_Amount>100000</ContractTerms_Amount>
+  <ContractTerms_PaymentModeCode>01</ContractTerms_PaymentModeCode>
+  <ContractTerms_DueDateCode>00</ContractTerms_DueDateCode>
+  <ContractTerms_LastDate>2025-03-14</ContractTerms_LastDate>
+  <ContractTerms_PaymentCurrencyCode>USD</ContractTerms_PaymentCurrencyCode>
+  <ContractTerms_ExchangeClause>Сведения о порядке пеерасчета валты</ContractTerms_ExchangeClause>
+  <ContractTerms_ContractSubject>ШЛЯПНЫЕ ФОРМЫ, ШЛЯПНЫЕ ЗАГОТОВКИ И КОЛПАКИ ИЗ ВОЙЛОКА ИЛИ ФЕТРА, НЕФОРМОВАННЫЕ БЕЗ ПОЛЕЙ; ПЛОСКИЕ И ЦИЛИНДРИЧЕСКИЕ ЗАГОТОВКИ (ВКЛЮЧАЯ С ПРОДОЛЬНЫМ РАЗРЕЗОМ) ИЗ ВОЙЛОКА ИЛИ ФЕТРА</ContractTerms_ContractSubject>
+  <ContractTerms_ContractTime>2025-05-14</ContractTerms_ContractTime>
+  <ContractTerms_OtherTerms>Прочие условия сделки</ContractTerms_OtherTerms>
+  <ContractTerms_ContractText>Текст контракта</ContractTerms_ContractText>
+  <ContractTerms_DealSign>1</ContractTerms_DealSign>
+  <ForeignPerson_OrganizationName>TEFAL</ForeignPerson_OrganizationName>
+  <ForeignPerson_Address_CountryCode>TR</ForeignPerson_Address_CountryCode>
+  <ForeignPerson_Address_CounryName>ТУРЦИЯ</ForeignPerson_Address_CounryName>
+  <ForeignPerson_Address_City>г. Стамбул</ForeignPerson_Address_City>
+  <ForeignPerson_Address_StreetHouse>ул. Ататюрка, д. 1</ForeignPerson_Address_StreetHouse>
+  <RussianPerson_OrganizationName>АКЦИОНЕРНОЕ ОБЩЕСТВО "ВНЕШЭКОНОМ ГРУППА"</RussianPerson_OrganizationName>
+  <RussianPerson_ShortName>АКЦИОНЕРНОЕ ОБЩЕСТВО "ВНЕШЭКОНОМ ГРУППА"</RussianPerson_ShortName>
+  <RussianPerson_OGRN>1027739831008</RussianPerson_OGRN>
+  <RussianPerson_INN>7706253782</RussianPerson_INN>
+  <RussianPerson_KPP>772801001</RussianPerson_KPP>
+  <RussianPerson_Address_PostalCode>117342</RussianPerson_Address_PostalCode>
+  <RussianPerson_Address_CountryCode>RU</RussianPerson_Address_CountryCode>
+  <RussianPerson_Address_CounryName>РОССИЯ</RussianPerson_Address_CounryName>
+  <RussianPerson_Address_City>г. Москва</RussianPerson_Address_City>
+  <RussianPerson_Address_StreetHouse>УЛ. БУТЛЕРОВА, Д. 17Б, ПОМ XII, К 86, ОФ 5, К 5</RussianPerson_Address_StreetHouse>
+  <ContractDeliveryTerms>
+    <DeliveryPlace>Стамбул</DeliveryPlace>
+    <DeliveryTermsNumericCode>04</DeliveryTermsNumericCode>
+    <DeliveryTermsStringCode>FOB</DeliveryTermsStringCode>
+    <InvoiceSaleTerms_SaleTermsCode>01</InvoiceSaleTerms_SaleTermsCode>
+    <InvoiceSaleTerms_SaleTermsDescription>30 календарных дней</InvoiceSaleTerms_SaleTermsDescription>
+  </ContractDeliveryTerms>
+  <ContractSpecification></ContractSpecification>
+  <ContractRegistration_PrDocumentName>Договор (контракт)</ContractRegistration_PrDocumentName>
+  <ContractRegistration_PrDocumentNumber>12</ContractRegistration_PrDocumentNumber>
+  <ContractRegistration_PrDocumentDate>2024-09-12</ContractRegistration_PrDocumentDate>
+  <ContractRegistration_ContractPlace>Москва</ContractRegistration_ContractPlace>
+  <ContractSignedPerson_PersonSurname>Салдыркин</ContractSignedPerson_PersonSurname>
+  <ContractSignedPerson_PersonName>Илья</ContractSignedPerson_PersonName>
+  <ContractSignedPerson_PersonMiddleName>Александрович</ContractSignedPerson_PersonMiddleName>
+  <ContractSignedPerson_PersonPost>Директор</ContractSignedPerson_PersonPost>
+  <ContractSignedPerson_IssueDate>2024-09-12</ContractSignedPerson_IssueDate>
+</AltaE2CONT>

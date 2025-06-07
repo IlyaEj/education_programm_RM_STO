@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RM_STO_DIPLOM", "RM_STO_DIPLOM\RM_STO_DIPLOM.csproj", "{19624117-E899-42B0-8F19-D44C0AF8ECD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RM_STO_DIPLOM.Desktop", "RM_STO_DIPLOM.Desktop\RM_STO_DIPLOM.Desktop.csproj", "{CA9D815B-821F-40F5-B7CF-32629CE1FBC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19624117-E899-42B0-8F19-D44C0AF8ECD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19624117-E899-42B0-8F19-D44C0AF8ECD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19624117-E899-42B0-8F19-D44C0AF8ECD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19624117-E899-42B0-8F19-D44C0AF8ECD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9D815B-821F-40F5-B7CF-32629CE1FBC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9D815B-821F-40F5-B7CF-32629CE1FBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9D815B-821F-40F5-B7CF-32629CE1FBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9D815B-821F-40F5-B7CF-32629CE1FBC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB64EDC5-04C6-47B0-A7B7-D3A37B4FA8FE}
+	EndGlobalSection
+EndGlobal

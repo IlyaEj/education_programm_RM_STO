@@ -1,0 +1,181 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RM_STO_DIPLOM.ControlFLC">
+	<ScrollViewer
+		VerticalScrollBarVisibility="Auto"
+		HorizontalScrollBarVisibility="Disabled">
+	<Grid
+		ColumnDefinitions="*,*"
+		ShowGridLines="True">
+		<StackPanel
+			Grid.Column="0"
+			Spacing="10">
+			<Border
+				Background="MediumAquamarine"
+				BorderBrush="MediumAquamarine"
+				BorderThickness="1"
+				CornerRadius="1">
+				<TextBlock
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center"
+					Foreground="White"
+					Text="Протокол завершения контроля"/>
+			</Border>
+			<TextBlock
+				Text="Перечень ошибок ФЛК по ДТ"
+				Margin="5"/>
+			<StackPanel
+				Orientation="Horizontal"
+				Spacing="25"
+				HorizontalAlignment="Center">
+				<Button
+					Command="{Binding CloseFLCAll}"
+					Background="MediumAquamarine"
+					FontWeight="Bold"
+					Foreground="White"
+					VerticalAlignment="Stretch"
+					Content="Закрыть все ошибки"/>
+				<Button
+					Command="{Binding CloseFLCCommand}"
+					CommandParameter="{Binding #ErrGrid.SelectedItem}"
+					Background="MediumAquamarine"
+					FontWeight="Bold"
+					Foreground="White"
+					VerticalAlignment="Stretch"
+					Content="Закрыть выбранные ошибки"/>
+			</StackPanel>
+			<DataGrid
+				Name="ErrGrid"
+				ItemsSource="{Binding DTErrs, Mode=TwoWay}"
+				GridLinesVisibility="All"
+				BorderThickness="1"
+				BorderBrush="Black"
+				SelectionMode="Single"
+				Margin="5">
+				<DataGrid.Styles>
+					<Style Selector="DataGridRow">
+						<Setter Property="Background" Value="{Binding Crit}"/>
+					</Style>
+					<Style Selector="TextBlock">
+						<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+						<Setter Property="TextAlignment" Value="Center"/>
+						<Setter Property="FontSize" Value="10"/>
+					</Style>
+				</DataGrid.Styles>
+				<DataGrid.Columns>
+					<DataGridTextColumn
+						CanUserSort="False"
+						Header="Описание ошибки"
+						Width="325"
+						Binding="{Binding Description}"/>
+					<DataGridTextColumn 
+						CanUserSort="False"
+						Header="Товар"
+						Width="75"
+						Binding="{Binding NomCom}"/>
+					<DataGridTextColumn
+						CanUserSort="False"
+						Header="Графа / Значение в документе"
+						Width="100"
+						Binding="{Binding NomGraf}"/>
+					<DataGridTextColumn
+						CanUserSort="False"
+						Header="Решение"
+						Width="75"/>
+				</DataGrid.Columns>
+			</DataGrid>
+			<Border
+				BorderBrush="Black"
+				BorderThickness="1"
+				CornerRadius="1"
+				Height="100"
+				IsVisible="False"
+				Margin="5">
+				<Grid
+					RowDefinitions="*,*,*,*,*,*,*"
+					ColumnDefinitions="0.5*,*,0.5*">
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="0"
+						Grid.Row="0">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="1"
+						Grid.Row="0">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="2"
+						Grid.Row="0">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="0"
+						Grid.Row="1"
+						Grid.ColumnSpan="2"
+						Grid.RowSpan="4">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="2"
+						Grid.Row="2">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="2"
+						Grid.Row="3">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="0"
+						Grid.Row="5"
+						Grid.ColumnSpan="3">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+					<Border
+						BorderBrush="Black"
+						BorderThickness="1"
+						Grid.Column="0"
+						Grid.Row="6"
+						Grid.ColumnSpan="3">
+						<TextBlock
+							Text="Код ошибки"
+							FontSize="9"/>
+					</Border>
+				</Grid>
+			</Border>
+		</StackPanel>
+	</Grid>
+		</ScrollViewer>
+</UserControl>

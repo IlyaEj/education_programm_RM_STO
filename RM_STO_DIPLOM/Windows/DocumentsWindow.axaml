@@ -1,0 +1,70 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RM_STO_DIPLOM.DocumentsWindow"
+        Title="DocumentsWindow">
+		<Grid
+			ColumnDefinitions="*"
+			ShowGridLines="True">
+			<ScrollViewer
+			VerticalScrollBarVisibility="Auto"
+			HorizontalScrollBarVisibility="Disabled">
+				<StackPanel
+					Spacing="5"
+					Grid.Column="0">
+					<Border
+						HorizontalAlignment="Stretch"
+						Background="MediumAquamarine"
+						Height="35">
+						<StackPanel
+							Orientation="Horizontal"
+							Spacing="10">
+							<TextBlock
+								FontWeight="Bold"
+								Foreground="White"
+								Margin="10 0"
+								VerticalAlignment="Center"
+								Text="Представленные документы"/>
+						</StackPanel>
+					</Border>
+									<DataGrid
+										ItemsSource="{Binding Docs}"
+										GridLinesVisibility="All"
+										BorderThickness="1" BorderBrush="MediumAquamarine">
+										<DataGrid.Styles>
+											<Style Selector="TextBlock">
+												<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+												<Setter Property="HorizontalAlignment" Value="Center"/>
+												<Setter Property="VerticalAlignment" Value="Center"/>
+											</Style>
+										</DataGrid.Styles>
+										<DataGrid.Columns>
+											<DataGridTextColumn
+												Header="Код вида документа"
+												Binding="{Binding Cod_Vid}"/>
+											<DataGridTextColumn
+												Header="Наименование"
+												Width="350"
+												Binding="{Binding NAIM}"/>
+											<DataGridTextColumn
+												Header="Дата"
+												Binding="{Binding DateOT}"/>
+											<DataGridTextColumn
+												Header="Номер"
+												Width="100"
+												Binding="{Binding KOD}"/>
+											<DataGridTextColumn
+												Header="Признак представления при подаче ДТ"
+												Width="350"
+												Binding="{Binding PredostavDoc}"/>
+											<DataGridTextColumn
+												Header="Код вида документа"
+												Binding="{Binding Cod_Vid}"/>
+										</DataGrid.Columns>
+									</DataGrid>
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+</Window>

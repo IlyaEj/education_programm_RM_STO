@@ -1,0 +1,339 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RM_STO_DIPLOM.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:RM_STO_DIPLOM.Views"
+        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+        x:Class="RM_STO_DIPLOM.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RM_STO_DIPLOM"
+		Width="1920"
+		Height="1080"
+		WindowState="Maximized"
+		CanResize="False">
+	<Design.DataContext>
+		<vm:MainViewModel/>
+	</Design.DataContext>
+	<Grid
+		ColumnDefinitions="*"
+		RowDefinitions="*">
+		<Panel
+			Grid.Column="0"
+			Grid.Row="0"
+			IsVisible="{Binding DeclChekerIsVisible}">
+			<UserControl
+				Content="{Binding DeclCheker}"/>
+		</Panel>
+		<Panel
+			Grid.Column="0"
+			Grid.Row="0"
+			IsVisible="{Binding ResultIsVisible}">
+			<UserControl
+				Content="{Binding ResultViewer}"/>
+		</Panel>
+	<Grid
+		Grid.Column="0"
+		Grid.Row="0"
+		RowDefinitions="0.15*,*,0.1*"
+		ColumnDefinitions="2*,*,*"
+		IsVisible="{Binding MainWinIsVisible}">
+		<Grid
+			RowDefinitions="2*,*"
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.ColumnSpan="3">
+		<StackPanel
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.ColumnSpan="3"
+			HorizontalAlignment="Stretch"
+			Orientation="Horizontal">
+			<StackPanel.Background>
+				<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+					<GradientStop Color="White" Offset="0.3"/>
+					<GradientStop Color="#4ECDC4" Offset="1.0"/>
+				</LinearGradientBrush>
+			</StackPanel.Background>
+			<RadioButton
+				Margin="25 0"
+				GroupName="Regime"
+				Content="Практика"
+				IsChecked="{Binding PracticeRegime}"/>
+			<RadioButton
+				Margin="25 0"
+				GroupName="Regime"
+				Content="Обучение"
+				IsChecked="{Binding EducationRegime}"/>
+		</StackPanel>
+			<StackPanel
+			Grid.Row="1"
+			Grid.Column="0"
+			Grid.ColumnSpan="3"
+			HorizontalAlignment="Stretch"
+			Orientation="Horizontal">
+				<StackPanel.Background>
+					<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+						<GradientStop Color="White" Offset="0.3"/>
+						<GradientStop Color="Green" Offset="1.0"/>
+					</LinearGradientBrush>
+				</StackPanel.Background>
+			</StackPanel>
+			<Image
+				Grid.RowSpan="2"
+				Margin="1350 5 0 5"
+				Source="avares://RM_STO_DIPLOM/Assets/emb.png"/>
+		</Grid>
+
+		<ListBox
+			Background="Transparent"
+			Grid.Row="1"
+			Grid.Column="0"
+			IsVisible="{Binding IsEducation}"
+			ItemsSource="{Binding EducationDTs}"
+			DoubleTapped="ListBox_DoubleTapped">
+			<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<Border
+					BorderBrush="Black"
+					BorderThickness="1">
+					<StackPanel
+						Margin="5 5"
+						Orientation="Vertical">
+					<TextBlock
+						FontSize="18"
+						FontWeight="Bold"
+						Text="{Binding Title_Ed}"
+						Name="adress"/>
+					<TextBlock
+						TextWrapping="Wrap"
+						Text="{Binding Desc_Ed}"/>
+				</StackPanel>
+				</Border>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+		</ListBox>
+		
+		<TreeView Grid.Row="1" Grid.Column="0"
+				  IsVisible="{Binding IsPractice}">
+			
+			<TreeViewItem Header="ДТ на оформлении">
+				<TreeViewItem
+					Header="Не прошедшие проверку на риски на регистрации">
+					<ListBox/>
+				</TreeViewItem>
+				<TreeViewItem
+					Header="ДТ на регистрации">
+						<ListBox
+							ItemsSource="{Binding DTFolders_Registration}"
+							DoubleTapped="ListBox_DoubleTapped">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<StackPanel
+										Orientation="Vertical">
+										<TextBlock
+											Text="{Binding Title}"
+											Name="adress"/>
+										<TextBlock Text="{Binding Placement}"/>
+									</StackPanel>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ListBox>
+				</TreeViewItem>
+				
+				<TreeViewItem
+					Header="ДТ в оформлении">
+					<ListBox
+							ItemsSource="{Binding DTFolders_v_Oform}"
+							DoubleTapped="ListBox_DoubleTapped">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<StackPanel
+									Orientation="Vertical">
+									<TextBlock
+										Text="{Binding Title}"
+										Name="adress"/>
+									<TextBlock Text="{Binding Placement}"/>
+								</StackPanel>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ListBox>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="ПТД на проверке">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Приостановление скроков выпуска">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Согласование выпуска">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Согласование продления сроков выпуска">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Согласование приостановления сроков выпуска">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Согласование характеристик досмотра">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Согласование выпуска со структурными подразделениями">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Отзыв после выпуска">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="КДТ после выпуска">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Согласование РКТ">
+					<ListBox/>
+				</TreeViewItem>
+				
+			</TreeViewItem>
+
+			<TreeViewItem Header="ДТ на контроле">
+
+				<TreeViewItem
+					Header="Условный выпуск">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Проведение таможенной экспертизы">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Выпуск под обеспечение">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Ожидающие заключения по 624 ММР">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Временный ввоз с обеспечением">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Буфер ПТД">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="ЗВТ, ожидающие подачи ДТ">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="НТД, ПДТ, ожидающие корректировки">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="ВТД, ожидающие подачи полной ДТ">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Отложенное определение таможенной стоимости">
+					<ListBox/>
+				</TreeViewItem>
+
+			</TreeViewItem>
+
+			<TreeViewItem Header="ДТ с окончательным решением">
+
+				<TreeViewItem
+					Header="Отказано в регистрации">
+					<ListBox
+							ItemsSource="{Binding DTFolders_Otkaz_v_Reg}"
+							DoubleTapped="ListBox_DoubleTapped">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<StackPanel
+									Orientation="Vertical">
+									<TextBlock
+										Text="{Binding Title}"
+										Name="adress"/>
+									<TextBlock Text="{Binding Placement}"/>
+								</StackPanel>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ListBox>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="ДТ выпущена, процесс не завершен">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Оформление завершено">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="ДТ отозвана">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Выпуск аннулирован">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Отказано в выпуске">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Процесс завершен">
+					<ListBox/>
+				</TreeViewItem>
+
+			</TreeViewItem>
+
+			<TreeViewItem Header="[Технические этапы]">
+
+				<TreeViewItem
+					Header="Ожидание подтверждения отказа в регистрации">
+					<ListBox/>
+				</TreeViewItem>
+
+				<TreeViewItem
+					Header="Списание сборов и платежей">
+					<ListBox/>
+				</TreeViewItem>
+
+			</TreeViewItem>
+			
+		</TreeView>
+	</Grid>
+	</Grid>
+</Window>

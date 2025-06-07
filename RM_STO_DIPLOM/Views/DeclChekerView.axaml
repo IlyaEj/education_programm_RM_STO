@@ -1,0 +1,2018 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:local="using:RM_STO_DIPLOM"
+			 mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+             x:Class="RM_STO_DIPLOM.Views.DeclChekerView">
+	<Grid
+		RowDefinitions="0.02*,0.1*,1.5*,0.05*"
+		Margin="5">
+		<UserControl
+			ZIndex="100"
+			Grid.Row="0"
+			Grid.RowSpan="4"
+			IsVisible="True"
+			Content="{Binding EducationControl}"/>
+		<StackPanel
+			Grid.Row="1"
+			Orientation="Horizontal">
+			<StackPanel
+				VerticalAlignment="Stretch"
+				Orientation="Horizontal"
+				Spacing="5">
+				<Button
+					VerticalAlignment="Stretch"
+					Width="125">
+					<TextBlock TextWrapping="WrapWithOverflow"
+							   Text="Регистрация"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   TextAlignment="Center"/>
+					<Button.Flyout>
+						<MenuFlyout>
+							<MenuItem Header="Регистрация"
+									  Command="{Binding OpenPodtverjd}"/>
+							<MenuItem Header="Отказ в регистрации"
+									  Command="{Binding OpenOtkaz}"/>
+						</MenuFlyout>
+					</Button.Flyout>
+				</Button>
+				<Button
+					VerticalAlignment="Stretch"
+					Width="125"
+					Command="{Binding OpenFLC}">
+					<TextBlock TextWrapping="WrapWithOverflow"
+							   Text="{Binding FLCText}"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   TextAlignment="Center"/>
+				</Button>
+				<Button
+					IsEnabled="False"
+					VerticalAlignment="Stretch"
+					Width="125">
+					<TextBlock TextWrapping="WrapWithOverflow"
+							   Text="Сверка"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   TextAlignment="Center"/>
+				</Button>
+				<Button
+					VerticalAlignment="Stretch"
+					Width="125">
+					<TextBlock TextWrapping="WrapWithOverflow"
+							   Text="Размещение на ВХ"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   TextAlignment="Center"/>
+					<Button.Flyout>
+						<MenuFlyout>
+							<MenuItem Header="Повторный запрос о факте наличия товаров"
+									  Command="{Binding OpenNalich}"/>
+							<MenuItem Header="Запрос о прибытии в ТПФК"
+									  IsVisible="False"
+									  Command="{Binding OpenPribit}"/>
+						</MenuFlyout>
+					</Button.Flyout>
+				</Button>
+			</StackPanel>
+			<StackPanel
+				VerticalAlignment="Stretch"
+					Orientation="Horizontal">
+				<StackPanel
+					VerticalAlignment="Stretch"
+					Orientation="Vertical"
+					Width="300"
+					Margin="15 0">
+					<TextBlock
+						Text="Проверку осуществил:"/>
+					<TextBlock
+						FontWeight="Bold"
+						Foreground="MediumAquamarine"
+						Text="{Binding FIO}"/>
+				</StackPanel>
+				<Button
+					VerticalAlignment="Stretch"
+					Width="125"
+					Command="{Binding CloseDC}">
+					<TextBlock TextWrapping="WrapWithOverflow"
+							   Text="Отложить"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   TextAlignment="Center"/>
+				</Button>
+			</StackPanel>
+		</StackPanel>
+		<Grid
+			ShowGridLines="True"
+			Grid.Row="2"
+			ColumnDefinitions="3.5*,*">
+			<Grid
+				Grid.Column="0"
+				RowDefinitions="0.05*,*">
+				<Grid
+					Grid.Row="1"
+					ColumnDefinitions="*,6*,*">
+					<Panel
+						Grid.Column="0"
+						Grid.ColumnSpan="3"
+						IsVisible="{Binding FLCIsVisible}">
+						<UserControl
+							Content="{Binding ControlFLC}"/>
+					</Panel>
+					<Grid
+						Grid.Column="1"
+						RowDefinitions="2*,0.3*"
+						IsVisible="{Binding MainIsVisible}">
+								<TabControl
+									HorizontalAlignment="Center">
+									<TabItem Header="Общие сведения"
+											 IsSelected="{Binding IsCheckedFirst, Mode=TwoWay}"
+											 FontSize="15"
+											 HorizontalContentAlignment="Center">
+										<ScrollViewer
+											Offset="{Binding ScrollOfset, Mode=TwoWay}"
+											VerticalScrollBarVisibility="Auto"
+											HorizontalScrollBarVisibility="Disabled"
+											Background="Gainsboro">
+											<Grid
+												RowDefinitions="50,*,*,*">
+												<StackPanel
+													Grid.Row="0"
+													HorizontalAlignment="Center"
+													VerticalAlignment="Center"
+													Orientation="Horizontal"
+													Spacing="15">
+													<TextBlock Text="1. Электронная копия ДТ"
+															   FontWeight="Bold"/>
+													<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="-5"
+															Width="40"
+															HorizontalAlignment="Left">
+														<TextBlock Text="{Binding G_1_1}"/>
+													</Border>
+													<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="-5"
+															Width="40"
+															HorizontalAlignment="Left">
+														<TextBlock Text="{Binding G_1_2}"/>
+													</Border>
+													<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="-5"
+															Width="40"
+															HorizontalAlignment="Left">
+														<TextBlock Text="{Binding G_1_31}"/>
+													</Border>
+													<TextBlock Text="№"
+															   FontWeight="Bold"/>
+													<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="-5"
+															Width="100"
+															HorizontalAlignment="Left">
+														<TextBlock Text="{Binding G_7_1_NUM}"/>
+													</Border>
+													<Button
+														Content="i"
+														Command="{Binding}"
+														CommandParameter="0"
+														CornerRadius="2"
+														Background="Transparent"
+														BorderBrush="MediumBlue"
+														Foreground="MediumBlue"
+														Padding="5 0 5 0"/>
+												</StackPanel>
+												<Grid
+													Grid.Row="1"
+													RowDefinitions="2*,*">
+													<Grid
+														Grid.Row="0"
+														ColumnDefinitions="150,125,*">
+														<StackPanel
+															Grid.Column="0"
+															Spacing="32"
+															Margin="15">
+															<TextBlock Text="3. Всего листов"/>
+															<TextBlock Text="5. Всего товаров"/>
+															<TextBlock Text="6. Всего мест"/>
+														</StackPanel>
+														<StackPanel
+															Grid.Column="1">
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10"
+																Width="45"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding G_3_1}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10"
+																Width="45"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding G_5_1}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding G_6_1}"/>
+															</Border>
+														</StackPanel>
+														<StackPanel
+															Grid.Column="2"
+															Spacing="32"
+															Margin="15">
+															<StackPanel
+																HorizontalAlignment="Stretch"
+																Orientation="Horizontal"
+																Spacing="15">
+																<TextBlock Text="4. Спецификации"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="40"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_4_1}"/>
+																</Border>
+																<TextBlock Text="/"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="40"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_4_2}"/>
+																</Border>
+															</StackPanel>
+															<StackPanel
+																HorizontalAlignment="Stretch"
+																Orientation="Horizontal"
+																Spacing="15">
+																<TextBlock Text="7. Код особенности декларирования"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="40"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_7}"/>
+																</Border>
+															</StackPanel>
+															<StackPanel
+																HorizontalAlignment="Stretch"
+																Orientation="Horizontal"
+																Spacing="15">
+																<TextBlock Text="12. Общая ТС"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="105"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_12_1}"/>
+																</Border>
+																<TextBlock Text="/"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="105"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_12_2}"/>
+																</Border>
+															</StackPanel>
+														</StackPanel>
+													</Grid>
+													<StackPanel
+														Grid.Row="1"
+														Orientation="Horizontal"
+														VerticalAlignment="Center"
+														Margin="15"
+														Spacing="15">
+														<TextBlock Text="16. Страна происхождения"/>
+														<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="200"
+																HorizontalAlignment="Left">
+															<TextBlock Text="{Binding G_16_1}"/>
+														</Border>
+													</StackPanel>
+												</Grid>
+												<Grid
+													Grid.Row="2"
+													ColumnDefinitions="*,*">
+													<StackPanel
+														Grid.Column="0"
+														Spacing="10">
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="2. Отправитель товаров"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_2}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="8. Получатель товаров"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_8}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="14. Декларант"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_14}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="Условия (гр. 11, 20, 22, 23, 24)"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_USL}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+													</StackPanel>
+													<StackPanel
+														Grid.Column="1"
+														Spacing="10">
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="9. Финансовое урегулирование"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_9}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,256">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="54. Место и дата"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_54}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="30. Местонахождение товаров"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_30}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+													</StackPanel>
+												</Grid>
+												<Grid
+													Grid.Row="3"
+													RowDefinitions="40,*">
+													<TextBlock
+														Grid.Row="0"
+														Background="MediumAquamarine"
+														FontWeight="Bold"
+														Foreground="White"
+														Padding="10"
+														Margin="8"
+														Text="Сведения о перевозке товаров"/>
+													<Grid
+														Grid.Row="1"
+														ColumnDefinitions="*,*">
+														<StackPanel
+															Grid.Column="0"
+															Spacing="5">
+															<StackPanel
+																Orientation="Horizontal"
+																Margin="10"
+																Spacing="10">
+																<TextBlock Text="15. Страна отправления"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="100"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_15_1}"/>
+																</Border>
+															</StackPanel>
+															<StackPanel
+																Orientation="Horizontal"
+																Margin="10"
+																Spacing="10">
+																<TextBlock Text="17. Страна назначения"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="100"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_17_1}"/>
+																</Border>
+															</StackPanel>
+															<CheckBox
+																Padding="5"
+																Margin="10"
+																IsChecked="{Binding G_19_1}"
+																IsEnabled="False"
+																Content="19. Контейнерная перевозка">
+																<CheckBox.Styles>
+																	<Style Selector="CheckBox:disabled">
+																		<Setter Property="Opacity" Value="100"/>
+																	</Style>
+																</CheckBox.Styles>
+															</CheckBox>
+															<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+																<Grid
+																	RowDefinitions="25,100">
+																	<StackPanel
+																		Grid.Row="0"
+																		Orientation="Horizontal"
+																		Background="MediumAquamarine"
+																		Margin="-5">
+																		<TextBlock Text="ТС при прибытии/убытии (гр. 18, 26)"
+																				   VerticalAlignment="Center"
+																				   Padding="5"
+																				   FontWeight="Bold"
+																				   Foreground="White"/>
+																		<Button/>
+																	</StackPanel>
+																	<TextBlock
+																		Grid.Row="1"
+																		Margin="5"
+																		Text="{Binding G_PRIB}"
+																		TextWrapping="Wrap"/>
+																</Grid>
+															</Border>
+														</StackPanel>
+														<StackPanel
+															Grid.Column="1"
+															Spacing="67">
+															<StackPanel
+																Orientation="Vertical"
+																Margin="10"
+																Spacing="10">
+																<TextBlock Text="29. Таможенный орган въезда/выезда"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="265"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_29_1}"/>
+																</Border>
+															</StackPanel>
+															<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Margin="5"
+															Width="390"
+															HorizontalAlignment="Left">
+																<Grid
+																	RowDefinitions="25,100">
+																	<StackPanel
+																		Grid.Row="0"
+																		Orientation="Horizontal"
+																		Background="MediumAquamarine"
+																		Margin="-5">
+																		<TextBlock Text="ТС на границе (гр. 21, 25)"
+																				   VerticalAlignment="Center"
+																				   Padding="5"
+																				   FontWeight="Bold"
+																				   Foreground="White"/>
+																		<Button/>
+																	</StackPanel>
+																	<TextBlock
+																		Grid.Row="1"
+																		Margin="5"
+																		Text="{Binding G_GRAN}"
+																		TextWrapping="Wrap"/>
+																</Grid>
+															</Border>
+														</StackPanel>
+													</Grid>
+												</Grid>
+											</Grid>
+										</ScrollViewer>
+									</TabItem>
+									<TabItem Header="Список товаров"
+											 IsSelected="{Binding IsCheckedSecond, Mode=TwoWay}"
+											 FontSize="15"
+											 HorizontalContentAlignment="Center">
+										<ScrollViewer
+											Offset="{Binding ScrollOfset, Mode=TwoWay}"
+											VerticalScrollBarVisibility="Auto"
+											HorizontalScrollBarVisibility="Disabled"
+											Background="Gainsboro">
+											<Grid
+												RowDefinitions="50,*,*"
+												ShowGridLines="True">
+												<StackPanel
+													Orientation="Horizontal"
+													VerticalAlignment="Center"
+													HorizontalAlignment="Center"
+													Grid.Row="0">
+													<Button Content="Решение по всем товарам"
+															Background="MediumAquamarine"
+															FontWeight="Bold"
+															Foreground="White"/>
+													<Button Content="Решение по выбранным товарам"
+															Background="MediumAquamarine"
+															FontWeight="Bold"
+															Foreground="White"/>
+													<Button Content="Отправить решение"
+															Background="MediumAquamarine"
+															FontWeight="Bold"
+															Foreground="White"/>
+												</StackPanel>
+												<DataGrid
+												ItemsSource="{Binding Commodities}"
+												Grid.Row="1"
+												GridLinesVisibility="All"
+												BorderThickness="2" BorderBrush="MediumAquamarine">
+													<DataGrid.Styles>
+														<Style Selector="TextBlock">
+															<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+														</Style>
+													</DataGrid.Styles>
+													<DataGrid.Columns>
+														<DataGridTextColumn Header="+"
+																			Width="55"/>
+														<DataGridTextColumn Header="№" Binding="{Binding ComNum}"
+																			Width="60"/>
+														<DataGridTextColumn
+															Header="Описание"
+															Binding="{Binding ComDesc}"
+															Width="175"/>
+														<DataGridTextColumn Header="Код ТН ВЭД" Binding="{Binding ComCode}" />
+														<DataGridTextColumn Header="Вес" Binding="{Binding ComWeight}" />
+														<DataGridTextColumn Header="Цена" Binding="{Binding ComCen}" />
+														<DataGridTextColumn
+															Header="Код СП"
+															Binding="{Binding ComCO}"
+															Width="70"/>
+														<DataGridTextColumn Header="ИТС" Binding="{Binding ComITS}"
+																			Width="75"/>
+														<DataGridTextColumn Header="Решение"
+																			Width="75"/>
+													</DataGrid.Columns>
+												</DataGrid>
+												<DataGrid
+													ItemsSource="{Binding Commodities_B}"
+													Grid.Row="2"
+													GridLinesVisibility="All"
+													BorderThickness="2" BorderBrush="MediumAquamarine">
+													<DataGrid.Styles>
+														<Style Selector="TextBlock">
+															<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+														</Style>
+													</DataGrid.Styles>
+													<DataGrid.Columns>
+														<DataGridTextColumn Header="Код вида платежа" Binding="{Binding ComB_VP}" />
+														<DataGridTextColumn Header="Сумма платежа" Binding="{Binding ComB_Summ}" />
+														<DataGridTextColumn Header="ИНН" Binding="{Binding ComB_INN}" />
+													</DataGrid.Columns>
+												</DataGrid>
+											</Grid>
+										</ScrollViewer>
+									</TabItem>
+									<TabItem Header="Товары"
+											 IsSelected="{Binding IsCheckedThird, Mode=TwoWay}"
+											 FontSize="15"
+											 HorizontalContentAlignment="Center">
+										<ScrollViewer
+											Offset="{Binding ScrollOfset, Mode=TwoWay}"
+											VerticalScrollBarVisibility="Auto"
+											HorizontalScrollBarVisibility="Disabled"
+											Background="Gainsboro">
+											<Grid
+												RowDefinitions="*,*,*"
+												Background="Gainsboro">
+												<Grid
+													Grid.Row="0"
+													ColumnDefinitions="*,*">
+													<StackPanel
+														Grid.Column="0"
+														Margin="10"
+														Spacing="15">
+														<StackPanel
+															Orientation="Horizontal"
+															VerticalAlignment="Center"
+															Spacing="10">
+															<TextBlock Text="32. № п/п"/>
+															<NumericUpDown
+																Name="CommNumSet"
+																Maximum="{Binding Commodities.Count}"
+																Value="{Binding ComIndex, Mode=TwoWay}"
+																Minimum="1"
+																Increment="1"
+																FormatString="0"
+																BorderBrush="MediumAquamarine"
+																Width="115"/>
+															<TextBlock Text="32.2 Код осоенностей"
+																	   Width="100"
+																	   TextWrapping="WrapWithOverflow"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="50"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_32_2}"/>
+															</Border>
+														</StackPanel>
+														<StackPanel
+															Orientation="Horizontal"
+															VerticalAlignment="Center"
+															Spacing="10">
+															<TextBlock Text="31.1 Наименование"/>
+														</StackPanel>
+														<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="300"
+																Height="150"
+																HorizontalAlignment="Left">
+															<ScrollViewer
+																VerticalScrollBarVisibility="Auto"
+																HorizontalScrollBarVisibility="Disabled">
+																<TextBlock Text="{Binding ChosenCom.ComDesc, Mode=TwoWay}"
+																		 TextWrapping="WrapWithOverflow"/>
+															</ScrollViewer>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Width="300"
+															Height="100"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="31.1 Описание группы товаров"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding ChosenCom.ComNum}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Width="300"
+															Height="100"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="31.2 Грузовые места, упаковка"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding ChosenCom.G_31_2}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Width="300"
+															Height="100"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="31.3 Сведения о контейнерах"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding ChosenCom.G_31_3}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Width="300"
+															Height="100"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="Товары в разобранном виде"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding G_PRIB}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+													</StackPanel>
+													<StackPanel
+														Grid.Column="1"
+														Margin="10"
+														Spacing="15">
+														<Grid
+															ColumnDefinitions="0.4*,*"
+															RowDefinitions="*,*">
+															<TextBlock
+																Grid.Column="0"
+																Grid.Row="0"
+																HorizontalAlignment="Left"
+																Text="33. ТН ВЭД ЕАЭС"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																HorizontalAlignment="Stretch">
+																<TextBlock
+																	HorizontalAlignment="Left"
+																	Text="{Binding ChosenCom.ComCode}"/>
+															</Border>
+															<StackPanel
+																Grid.Column="1"
+																Grid.Row="1"
+																Orientation="Horizontal"
+																Spacing="5">
+																<TextBlock
+																	VerticalAlignment="Center"
+																	Text="33.2"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																Width="25"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_S}"/>
+																</Border>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																Width="25"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_I}"/>
+																</Border>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																Width="25"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_O}"/>
+																</Border>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																Width="25"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_M}"/>
+																</Border>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																Width="40"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_P}"/>
+																</Border>
+																<TextBlock
+																	VerticalAlignment="Center"
+																	Text="33.3"/>
+																<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Grid.Column="0"
+																Grid.Row="1"
+																Width="60"
+																HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_P}"/>
+																</Border>
+															</StackPanel>
+															<StackPanel
+																Margin="40 0 0 0"
+																Grid.Column="1"
+																Grid.Row="0"
+																Orientation="Horizontal"
+																Spacing="20">
+																<TextBlock Text="С"/>
+																<TextBlock Text="И"/>
+																<TextBlock Text="О"/>
+																<TextBlock Text="М"/>
+																<TextBlock Text="П"/>
+																<TextBlock
+																	Margin="45 0 0 0"
+																	Text="Код"/>
+															</StackPanel>
+														</Grid>
+														<StackPanel
+															Orientation="Horizontal"
+															VerticalAlignment="Center"
+															Spacing="10">
+															<TextBlock 
+																VerticalAlignment="Center"
+																Text="33.3 Лицензирование"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="50"
+																Height="30"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_33_3}"/>
+															</Border>
+															<CheckBox
+																Margin="100 0"
+																Content="Воен. назн."
+																IsEnabled="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}"/>
+														</StackPanel>
+														<StackPanel
+															Orientation="Horizontal"
+															VerticalAlignment="Center"
+															Spacing="10">
+															<TextBlock Text="34.Код страны"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="50"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.ComCO}"/>
+															</Border>
+														</StackPanel>
+														<StackPanel
+															Orientation="Horizontal">
+															<TextBlock Text="37. Процедура"
+																	   Margin="0 0 12 0"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5 -5 10 -5"
+																Width="35"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_37_1}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5 -5 10 -5"
+																Width="35"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_37_2}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5"
+																Width="50"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_37_3}"/>
+															</Border>
+														</StackPanel>
+														<Grid
+															RowDefinitions="*,*"
+															ColumnDefinitions="Auto,10,Auto">
+															<TextBlock
+																Grid.Column="0"
+																Grid.Row="0"
+																Text="35. Вес брутто"/>
+																<Border
+																	Grid.Row="1"
+																	Grid.Column="0"
+																	Background="Gainsboro"
+																	BorderBrush="MediumAquamarine"
+																	BorderThickness="1"
+																	CornerRadius="1"
+																	Padding="5"
+																	Width="150"
+																	HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_35}"/>
+																</Border>
+															<TextBlock
+																Grid.Column="2"
+																Grid.Row="0"
+																Text="38. Вес нетто"/>
+															<StackPanel
+																Orientation="Horizontal"
+																Grid.Column="2"
+																Grid.Row="1"
+																Spacing="10">
+																<Border
+																	Background="Gainsboro"
+																	BorderBrush="MediumAquamarine"
+																	BorderThickness="1"
+																	CornerRadius="1"
+																	Padding="5"
+																	Width="115"
+																	HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding ChosenCom.G_38}"/>
+																</Border>
+																<TextBlock
+																	FontWeight="Bold"
+																	Foreground="MediumAquamarine"
+																	VerticalAlignment="Center"
+																	Text="/"/>
+																<Border
+																	Background="Gainsboro"
+																	BorderBrush="MediumAquamarine"
+																	BorderThickness="1"
+																	CornerRadius="1"
+																	Padding="5"
+																	Width="100"
+																	HorizontalAlignment="Left">
+																	<TextBlock Text="{Binding G_1_1}"/>
+																</Border>
+															</StackPanel>
+														</Grid>
+														<StackPanel
+															Orientation="Horizontal">
+															<TextBlock Text="36. Преференции"
+																	   Margin="0 0 12 0"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5 -5 10 -5"
+																Width="35"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_36_1}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5 -5 10 -5"
+																Width="35"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_36_2}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5 -5 10 -5"
+																Width="35"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_36_3}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="-5 -5 10 -5"
+																Width="35"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_36_4}"/>
+															</Border>
+														</StackPanel>
+														<Border
+															Background="Gainsboro"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Width="350"
+															Height="100"
+															HorizontalAlignment="Left">
+															<Grid
+																RowDefinitions="25,100">
+																<StackPanel
+																	Grid.Row="0"
+																	Orientation="Horizontal"
+																	Background="MediumAquamarine"
+																	Margin="-5">
+																	<TextBlock Text="40. Предшествующие документы"
+																			   VerticalAlignment="Center"
+																			   Padding="5"
+																			   FontWeight="Bold"
+																			   Foreground="White"/>
+																	<Button/>
+																</StackPanel>
+																<TextBlock
+																	Grid.Row="1"
+																	Margin="5"
+																	Text="{Binding ChosenCom.G_40_1}"
+																	TextWrapping="Wrap"/>
+															</Grid>
+														</Border>
+														<TextBlock Text="31.1. Кол-во в иных ЕИ"/>
+														<Grid
+															ColumnDefinitions="Auto,Auto,Auto"
+															RowDefinitions="Auto,Auto,Auto"
+															Margin="85 0 0 0">
+															<Border
+																Grid.Column="0"
+																Grid.Row="0"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_31_1_1, Mode=TwoWay}"/>
+															</Border>
+															<Border
+																Grid.Column="1"
+																Grid.Row="0"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10 0 0 0"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_31_1_2}"/>
+															</Border>
+															<Border
+																Grid.Column="2"
+																Grid.Row="0"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10 0 0 0"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.InEd_1}"/>
+															</Border>
+															<Border
+																Grid.Column="0"
+																Grid.Row="1"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="0 5 0 0"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_31_1_3}"/>
+															</Border>
+															<Border
+																Grid.Column="1"
+																Grid.Row="1"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10 5 0 0"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_31_1_4}"/>
+															</Border>
+															<Border
+																Grid.Column="2"
+																Grid.Row="1"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Margin="10 5 0 0"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.InEd_2}"/>
+															</Border>
+														</Grid>
+														<StackPanel
+															Orientation="Horizontal"
+															Spacing="10">
+															<TextBlock Text="41. Кол-во в ДЕИ"
+																	   TextWrapping="WrapWithOverflow"
+																	   Width="75"/>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.ComKoll}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.ComEI}"/>
+															</Border>
+															<Border
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="90"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.EdIs}"/>
+															</Border>
+														</StackPanel>
+														<Grid
+															RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+															ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+															Width="350"
+															Height="150"
+															Margin="-15,0,0,0">
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="42. Цена товара"
+																Grid.Column="0"
+																Grid.Row="0"
+																Grid.ColumnSpan="3"/>
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="Валюта"
+																Grid.Column="3"
+																Grid.Row="0"/>
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="Курс валюты"
+																Grid.Column="4"
+																Grid.Row="0"
+																Grid.ColumnSpan="2"/>
+															<Border
+																Grid.Column="0"
+																Grid.Row="1"
+																Grid.ColumnSpan="3"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="150"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.ComCen}"/>
+															</Border>
+															<Border
+																Grid.Column="3"
+																Grid.Row="1"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="50"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding Cur}"/>
+															</Border>
+															<Border
+																Grid.Column="4"
+																Grid.Row="1"
+																Grid.ColumnSpan="2"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="95"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding CurEx}"/>
+															</Border>
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="43. Код МОС"
+																Grid.Column="0"
+																Grid.Row="2"
+																Grid.ColumnSpan="2"/>
+															<Border
+																Grid.Column="2"
+																Grid.Row="2"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="60"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_43}"/>
+															</Border>
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="43.2"
+																Grid.Column="3"
+																Grid.Row="2"/>
+															<ComboBox
+																Grid.Column="4"
+																Grid.Row="2"
+																Grid.ColumnSpan="2"
+																Width="95"
+																IsEnabled="False"/>
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="45. Тамож. стоимость"
+																Grid.Column="0"
+																Grid.Row="3"
+																Grid.ColumnSpan="3"/>
+															<TextBlock
+																VerticalAlignment="Center"
+																Text="46. Стат. стоимость"
+																Grid.Column="3"
+																Grid.Row="3"
+																Grid.ColumnSpan="3"/>
+															<Border
+																Grid.Column="0"
+																Grid.Row="4"
+																Grid.ColumnSpan="3"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="150"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_45}"/>
+															</Border>
+															<Border
+																Grid.Column="3"
+																Grid.Row="4"
+																Grid.ColumnSpan="3"
+																Background="Gainsboro"
+																BorderBrush="MediumAquamarine"
+																BorderThickness="1"
+																CornerRadius="1"
+																Padding="5"
+																Width="150"
+																HorizontalAlignment="Left">
+																<TextBlock Text="{Binding ChosenCom.G_46}"/>
+															</Border>
+														</Grid>
+													</StackPanel>
+												</Grid>
+												<Grid
+													Grid.Row="1"
+													ColumnDefinitions="*,*,*,*"
+													RowDefinitions="Auto,Auto,Auto,Auto"
+													Margin="5">
+													<Button
+														Width="180"
+														Grid.Column="0"
+														Grid.Row="0"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.1 Автомобили"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="1"
+														Grid.Row="0"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.7 Сроки поставки"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="2"
+														Grid.Row="0"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.14 Страны назначения"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="3"
+														Grid.Row="0"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="39. Квота"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="0"
+														Grid.Row="1"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.4 Акцизные марки"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="1"
+														Grid.Row="1"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.10 Список КИЗ"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="2"
+														Grid.Row="1"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="ОИС"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="3"
+														Grid.Row="1"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="40. Предшествующие документы"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="0"
+														Grid.Row="2"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.5 Условия поставки"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="1"
+														Grid.Row="2"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.11 СТЗ"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="2"
+														Grid.Row="2"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="Товары в разобранном виде"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="3"
+														Grid.Row="2"
+														Command="{Binding OpenDoc}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="44. Представленные документы"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="0"
+														Grid.Row="3"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.6 Переработка"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="1"
+														Grid.Row="3"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="31.13 Средства идентификации"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="2"
+														Grid.Row="3"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="Сведения о стране назначения при ВПД"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+													<Button
+														Width="180"
+														Grid.Column="3"
+														Grid.Row="3"
+														Command="{Binding}"
+														Height="47.5">
+														<TextBlock TextWrapping="WrapWithOverflow"
+																   TextAlignment="Center"
+																   Text="Доп. сведения по договору/контракту"
+																   HorizontalAlignment="Center"
+																   VerticalAlignment="Center"/>
+													</Button>
+												</Grid>
+												<StackPanel
+													Grid.Row="2">
+													<Border
+															Background="MediumAquamarine"
+															BorderBrush="MediumAquamarine"
+															BorderThickness="1"
+															CornerRadius="1"
+															Padding="5"
+															Width="1000"
+															Height="25"
+															Margin="10"
+															HorizontalAlignment="Left">
+														<TextBlock
+															Text="47.7 Исчисление таможенных платежей"
+															Foreground="White"
+															FontWeight="Bold"/>
+													</Border>
+													<DataGrid
+														ItemsSource="{Binding ChosenCom.Commodity_47s}"
+														Grid.Row="1"
+														AutoGenerateColumns="True"
+														HorizontalScrollBarVisibility="Disabled"
+														GridLinesVisibility="All"
+														BorderThickness="2"
+														BorderBrush="MediumAquamarine">
+														<DataGrid.Styles>
+															<Style Selector="TextBlock">
+																<Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+															</Style>
+														</DataGrid.Styles>
+														<DataGrid.Columns>
+															<DataGridTextColumn Header="Код вида платежа"
+																				Binding="{Binding Com_VP}"/>
+															<DataGridTextColumn Header="№ по виду"
+																				Binding="{Binding ComNum}"/>
+															<DataGridTextColumn Header="Основа начисления"
+																				Binding="{Binding Com_Osn}"/>
+															<DataGridTextColumn Header="Ставка"
+																				Binding="{Binding Com_Stav}" />
+															<DataGridTextColumn Header="Сумма"
+																				Binding="{Binding Com_Summ}" />
+															<DataGridTextColumn Header="СП"
+																				Binding="{Binding Com_SP}" />
+														</DataGrid.Columns>
+													</DataGrid>
+												</StackPanel>
+											</Grid>
+										</ScrollViewer>
+									</TabItem>
+								</TabControl>
+						<TabControl
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							TabStripPlacement="Bottom">
+							<TabItem Header="Общий контроль ДТ"
+									 FontSize="12">
+								<StackPanel
+									Orientation="Horizontal"
+									Spacing="10">
+									<Button
+										Background="MediumAquamarine"
+										Command="{Binding OpenOtmet}"
+										VerticalAlignment="Stretch"
+										Width="100"
+										Padding="0">
+										<TextBlock
+											FontWeight="Bold"
+											Foreground="White"
+											TextWrapping="Wrap"
+											FontSize="12"
+											TextAlignment="Center"
+											Text="Служебные отметки"/>
+									</Button>
+									<Button
+										Background="MediumAquamarine"
+										IsEnabled="False"
+										VerticalAlignment="Stretch"
+										Width="100"
+										Padding="0">
+										<TextBlock
+											FontWeight="Bold"
+											Foreground="White"
+											TextWrapping="Wrap"
+											FontSize="12"
+											TextAlignment="Center"
+											Text="Товарные отметки"/>
+									</Button>
+									<CheckBox
+										Margin="180 0 0 0"
+										Content="Валютный контроль"/>
+									<CheckBox
+										Content="Контроль соблюдения условий процедуры"/>
+								</StackPanel>
+							</TabItem>
+							<TabItem Header="Код товара и СП"
+									 FontSize="15"
+									 IsVisible="False">
+							</TabItem>
+							<TabItem Header="Соблюдение ЗиО"
+									 FontSize="15"
+									 IsVisible="False">
+							</TabItem>
+							<TabItem Header="Контроль ТС"
+									 FontSize="15"
+									 IsVisible="False">
+							</TabItem>
+							<TabItem Header="Платежи"
+									 FontSize="15"
+									 IsVisible="False">
+							</TabItem>
+						</TabControl>
+					</Grid>
+				</Grid>
+			</Grid>
+			<Panel
+				Grid.Column="1"
+				Background="AntiqueWhite">
+				<Grid
+					RowDefinitions="0.05*,0.05*,*"
+					ShowGridLines="True">
+					<Border
+						Grid.Row="0"
+						Grid.ColumnSpan="2"
+						Background="LightBlue"
+						BorderBrush="LightGray"
+						BorderThickness="2"
+						CornerRadius="1"
+						Padding="5"
+						HorizontalAlignment="Stretch">
+						<TextBlock
+							FontSize="18"
+							VerticalAlignment="Bottom"
+							Text="Документы"/>
+					</Border>
+					<Border
+						Grid.Row="1"
+						Grid.ColumnSpan="2"
+						Background="LightGray"
+						BorderBrush="White"
+						BorderThickness="2"
+						CornerRadius="1"
+						Padding="5"
+						HorizontalAlignment="Stretch">
+						<TextBlock
+							FontSize="18"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Bottom"
+							Text="Внутренние"/>
+					</Border>
+					<Border
+						Grid.Row="2"
+						Background="LightGray"
+						BorderBrush="White"
+						BorderThickness="2">
+						<TabControl
+							HorizontalAlignment="Stretch">
+							<TabItem
+								Header="Входящие">
+								<ItemsControl
+									Margin="0 10"
+									Background="White"
+									ItemsSource="{Binding ImportMes}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<Border
+												Background="LightGray"
+												BorderBrush="White"
+												BorderThickness="2"
+												CornerRadius="1"
+												Padding="5"
+												HorizontalAlignment="Stretch">
+												<StackPanel>
+												<TextBlock
+													FontSize="12"
+													HorizontalAlignment="Left"
+													TextWrapping="Wrap"
+													VerticalAlignment="Center"
+													Text="{Binding NAIM}"/>
+												<TextBlock
+													FontSize="12"
+													HorizontalAlignment="Left"
+													TextWrapping="Wrap"
+													VerticalAlignment="Center"
+													Text="{Binding PP}"/>
+												</StackPanel>
+											</Border>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+							</TabItem>
+							<TabItem
+								Header="Исходящие">
+								<ItemsControl
+									Margin="0 10"
+									Background="White"
+									ItemsSource="{Binding ExportMes}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<Border
+												Background="LightGray"
+												BorderBrush="White"
+												BorderThickness="2"
+												CornerRadius="1"
+												Padding="5"
+												HorizontalAlignment="Stretch">
+												<StackPanel>
+													<TextBlock
+														FontSize="12"
+														HorizontalAlignment="Left"
+														TextWrapping="Wrap"
+														VerticalAlignment="Center"
+														Text="{Binding NAIM}"/>
+													<TextBlock
+														FontSize="12"
+														HorizontalAlignment="Left"
+														TextWrapping="Wrap"
+														VerticalAlignment="Center"
+														Text="{Binding PP}"/>
+												</StackPanel>
+											</Border>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+							</TabItem>
+						</TabControl>						
+					</Border>
+				</Grid>
+			</Panel>
+		</Grid>
+	</Grid>
+</UserControl>
